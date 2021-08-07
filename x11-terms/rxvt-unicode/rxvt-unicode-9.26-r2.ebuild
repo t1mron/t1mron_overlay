@@ -88,9 +88,6 @@ src_compile() {
 src_install() {
 	default
 
-	#systemd_douserunit "${FILESDIR}"/urxvtd.service
-	#systemd_douserunit "${FILESDIR}"/urxvtd.socket
-
 	make_desktop_entry urxvt rxvt-unicode utilities-terminal \
 		"System;TerminalEmulator"
 }
