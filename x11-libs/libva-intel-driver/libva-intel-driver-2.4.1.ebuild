@@ -1,8 +1,10 @@
 EAPI=7
 MY_PN="intel-driver-g45-h264"
+MY_PV="2.4.1"
+
 inherit autotools multilib-minimal
 
-DESCRIPTION="HW video decode support for Intel integrated graphics"
+DESCRIPTION="intel-driver-g45-h264"
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/vaapi"
 
 if [[ ${PV} != *9999* ]] ; then
