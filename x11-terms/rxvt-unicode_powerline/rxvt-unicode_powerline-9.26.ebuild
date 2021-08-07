@@ -7,7 +7,7 @@ inherit autotools desktop flag-o-matic systemd prefix
 
 DESCRIPTION="rxvt clone with xft and unicode support"
 HOMEPAGE="http://software.schmorp.de/pkg/rxvt-unicode.html"
-SRC_URI="http://dist.schmorp.de/rxvt-unicode/${P}.tar.bz2"
+SRC_URI="http://dist.schmorp.de/rxvt-unicode/${P/_powerline}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
