@@ -2,7 +2,8 @@ EAPI=7
 MY_PN="intel-driver-g45-h264"
 MY_PV="2.4.1"
 
-inherit autotools multilib-minimal
+AUTOTOOLS_AUTORECONF="yes"
+inherit autotools-multilib
 
 DESCRIPTION="intel-driver-g45-h264"
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/vaapi"
@@ -30,19 +31,15 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
-	eapply_user
-	sed -e 's/intel-gen4asm/\0diSaBlEd/g' -i configure.ac || die
-	eautoreconf
+   cd ${S}
+   sed -e 's/intel-gen4asm/\0diSaBlEd/g' -i configure.ac || die
+   autotools-multilib_src_prepare
 }
 
 multilib_src_configure() {
-	local myconf=(
-		$(use_enable wayland)
-		$(use_enable X x11)
-	)
-	ECONF_SOURCE="${S}" econf "${myconf[@]}"
-}
-
-multilib_src_install_all() {
-	find "${D}" -name "*.la" -delete || die
+   local myeconfargs=(
+      $(use_enable wayland)
+      $(use_enable X x11)
+   )
+   autotools-utils_src_configure
 }
