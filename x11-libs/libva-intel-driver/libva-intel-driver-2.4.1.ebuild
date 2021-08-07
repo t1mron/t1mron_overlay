@@ -9,7 +9,7 @@ HOMEPAGE="http://www.freedesktop.org/wiki/Software/vaapi"
 
 if [[ ${PV} != *9999* ]] ; then
 	SRC_URI="https://bitbucket.org/alium/g45-h264/downloads/${MY_PN}-${MY_PV}.tar.gz"
-	S="${WORKDIR}/${MY_PN}-${PV}"
+	S="${WORKDIR}/intel-vaapi-driver"
 	KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 fi
 
