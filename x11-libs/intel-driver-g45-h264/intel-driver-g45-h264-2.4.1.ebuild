@@ -2,7 +2,7 @@ EAPI=7
 
 inherit autotools
 
-DESCRIPTION="intel-driver-g45-h264"
+DESCRIPTION="VA-API implementation for Intel G45 chipsets with H264 support"
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/vaapi"
 
 if [[ ${PV} != *9999* ]] ; then
