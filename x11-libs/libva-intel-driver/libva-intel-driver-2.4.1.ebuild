@@ -30,15 +30,19 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 src_prepare() {
-   cd ${S}
-   sed -e 's/intel-gen4asm/\0diSaBlEd/g' -i configure.ac || die
-   autotools-multilib_src_prepare
+	eapply_user
+	sed -e 's/intel-gen4asm/\0diSaBlEd/g' -i configure.ac || die
+	eautoreconf
 }
 
 multilib_src_configure() {
-   local myeconfargs=(
-      $(use_enable wayland)
-      $(use_enable X x11)
-   )
-   autotools-utils_src_configure
+	local myconf=(
+		$(use_enable wayland)
+		$(use_enable X x11)
+	)
+	ECONF_SOURCE="${S}" econf "${myconf[@]}"
+}
+
+multilib_src_install_all() {
+	find "${D}" -name "*.la" -delete || die
 }
