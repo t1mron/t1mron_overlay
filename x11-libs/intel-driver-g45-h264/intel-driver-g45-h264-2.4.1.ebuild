@@ -2,7 +2,7 @@ EAPI=7
 MY_PN="intel-driver-g45-h264"
 MY_PV="2.4.1"
 
-inherit autotools
+inherit autotools multilib-minimal
 
 DESCRIPTION="intel-driver-g45-h264"
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/vaapi"
