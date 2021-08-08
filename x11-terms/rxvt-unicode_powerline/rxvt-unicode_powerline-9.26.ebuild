@@ -32,8 +32,8 @@ BDEPEND="virtual/pkgconfig"
 # WARNING: will bdepend on >=sys-devel/autoconf-2.71 (masked as of 2021-05-16) if eautoreconf has to be called
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-9.06-case-insensitive-fs.patch
-	"${FILESDIR}"/${PN}-9.21-xsubpp.patch
+	"${FILESDIR}"/${PN/_powerline}-9.06-case-insensitive-fs.patch
+	"${FILESDIR}"/${PN/_powerline}-9.21-xsubpp.patch
 	"${FILESDIR}"/24-bit-color.patch
 	"${FILESDIR}"/enable-wide-glyphs.patch
 	"${FILESDIR}"/improve-font-rendering.patch
@@ -43,7 +43,7 @@ DOCS=(
 	README.FAQ
 	doc/README.xvt
 	doc/changes.txt
-	doc/etc/${PN}.term{cap,info}
+	doc/etc/${PN/_powerline}.term{cap,info}
 	doc/rxvt-tabbed
 )
 
@@ -82,7 +82,7 @@ src_compile() {
 
 	sed -i \
 		-e 's/RXVT_BASENAME = "rxvt"/RXVT_BASENAME = "urxvt"/' \
-		"${S}"/doc/rxvt-tabbed || die
+		"${S/_powerline}"/doc/rxvt-tabbed || die
 }
 
 src_install() {
