@@ -7,11 +7,11 @@ inherit autotools desktop flag-o-matic systemd prefix
 
 DESCRIPTION="rxvt clone with xft and unicode support"
 HOMEPAGE="http://software.schmorp.de/pkg/rxvt-unicode.html"
-SRC_URI="http://dist.schmorp.de/rxvt-unicode/${P/_powerline}.tar.bz2"
+SRC_URI="http://dist.schmorp.de/rxvt-unicode/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris"
 IUSE="256-color 24-bit-color blink fading-colors +font-styles gdk-pixbuf iso14755 +mousewheel
 	+perl startup-notification unicode3 +utmp wide-glyphs +wtmp xft"
 RESTRICT="test"
@@ -32,9 +32,9 @@ BDEPEND="virtual/pkgconfig"
 # WARNING: will bdepend on >=sys-devel/autoconf-2.71 (masked as of 2021-05-16) if eautoreconf has to be called
 
 PATCHES=(
-	"${FILESDIR}"/${PN/_powerline}-9.06-case-insensitive-fs.patch
-	"${FILESDIR}"/${PN/_powerline}-9.21-xsubpp.patch
-	"${FILESDIR}"/24-bit-color.patch
+	"${FILESDIR}"/${PN}-9.06-case-insensitive-fs.patch
+	"${FILESDIR}"/${PN}-9.21-xsubpp.patch
+	"${FILESDIR}"/24-bit-color.http://dist.schmorp.de/rxvt-unicode/patch
 	"${FILESDIR}"/enable-wide-glyphs.patch
 	"${FILESDIR}"/improve-font-rendering.patch
 )
@@ -43,7 +43,7 @@ DOCS=(
 	README.FAQ
 	doc/README.xvt
 	doc/changes.txt
-	doc/etc/${PN/_powerline}.term{cap,info}
+	doc/etc/${PN}.term{cap,info}
 	doc/rxvt-tabbed
 )
 
@@ -82,7 +82,7 @@ src_compile() {
 
 	sed -i \
 		-e 's/RXVT_BASENAME = "rxvt"/RXVT_BASENAME = "urxvt"/' \
-		"${S/_powerline}"/doc/rxvt-tabbed || die
+		"${S}"/doc/rxvt-tabbed || die
 }
 
 src_install() {
