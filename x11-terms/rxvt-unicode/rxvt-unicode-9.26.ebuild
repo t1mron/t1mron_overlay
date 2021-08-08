@@ -34,7 +34,7 @@ BDEPEND="virtual/pkgconfig"
 PATCHES=(
 	"${FILESDIR}"/${PN}-9.06-case-insensitive-fs.patch
 	"${FILESDIR}"/${PN}-9.21-xsubpp.patch
-	"${FILESDIR}"/24-bit-color.http://dist.schmorp.de/rxvt-unicode/patch
+	"${FILESDIR}"/24-bit-color.patch
 	"${FILESDIR}"/enable-wide-glyphs.patch
 	"${FILESDIR}"/improve-font-rendering.patch
 )
@@ -87,6 +87,9 @@ src_compile() {
 
 src_install() {
 	default
+
+	#systemd_douserunit "${FILESDIR}"/urxvtd.service
+	#systemd_douserunit "${FILESDIR}"/urxvtd.socket
 
 	make_desktop_entry urxvt rxvt-unicode utilities-terminal \
 		"System;TerminalEmulator"
