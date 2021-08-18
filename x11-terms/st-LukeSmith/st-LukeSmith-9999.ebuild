@@ -6,6 +6,7 @@ inherit desktop git-r3 multilib savedconfig toolchain-funcs
 
 DESCRIPTION="simple terminal implementation for X"
 HOMEPAGE="https://st.suckless.org/"
+# change
 EGIT_REPO_URI="https://github.com/LukeSmithxyz/st.git"
 
 LICENSE="MIT-with-advertising"
@@ -51,7 +52,8 @@ src_configure() {
 src_install() {
 	emake DESTDIR="${D}" PREFIX="${EPREFIX}"/usr install
 
-	dodoc TODO
+	# delete
+	#dodoc #TODO
 
 	make_desktop_entry ${PN} simpleterm utilities-terminal 'System;TerminalEmulator;' ''
 
