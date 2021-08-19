@@ -10,7 +10,7 @@ EGIT_REPO_URI="${HOMEPAGE}"
 
 SLOT="0"
 LICENSE="MIT-with-advertising"
-
+KEYWORDS="amd64"
 IUSE="savedconfig"
 
 RDEPEND="
