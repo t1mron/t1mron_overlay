@@ -2,12 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-
+MY_PN="rxvt-unicode"
+MY_P="${MY_PN}-9.26"
 inherit autotools desktop flag-o-matic systemd prefix
 
 DESCRIPTION="rxvt clone with xft and unicode support"
 HOMEPAGE="http://software.schmorp.de/pkg/rxvt-unicode.html"
-SRC_URI="http://dist.schmorp.de/rxvt-unicode/${P}.tar.bz2"
+SRC_URI="http://dist.schmorp.de/rxvt-unicode/${MY_P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -32,8 +33,8 @@ BDEPEND="virtual/pkgconfig"
 # WARNING: will bdepend on >=sys-devel/autoconf-2.71 (masked as of 2021-05-16) if eautoreconf has to be called
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-9.06-case-insensitive-fs.patch
-	"${FILESDIR}"/${PN}-9.21-xsubpp.patch
+	"${FILESDIR}"/${MY_PN}-9.06-case-insensitive-fs.patch
+	"${FILESDIR}"/${MY_PN}-9.21-xsubpp.patch
 	"${FILESDIR}"/24-bit-color.patch
 	"${FILESDIR}"/enable-wide-glyphs.patch
 	"${FILESDIR}"/improve-font-rendering.patch
@@ -43,7 +44,7 @@ DOCS=(
 	README.FAQ
 	doc/README.xvt
 	doc/changes.txt
-	doc/etc/${PN}.term{cap,info}
+	doc/etc/${MY_PN}.term{cap,info}
 	doc/rxvt-tabbed
 )
 
