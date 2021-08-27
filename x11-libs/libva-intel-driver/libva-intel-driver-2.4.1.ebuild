@@ -3,7 +3,7 @@ EAPI=7
 MY_PN="intel-driver-g45-h264"
 MY_PV="2.4.1"
 
-inherit autotools
+inherit autotools multilib-minimal
 
 DESCRIPTION="VA-API implementation for Intel G45 chipsets with H264 support"
 HOMEPAGE="http://www.freedesktop.org/wiki/Software/vaapi"
@@ -17,14 +17,14 @@ fi
 LICENSE="MIT"
 SLOT="0"
 IUSE="wayland X"
-RESTRICT="test"
+RESTRICT="test" # No tests
 
 RDEPEND="
-	>=x11-libs/libdrm-2.4.52[video_cards_intel]
-	>=x11-libs/libva-2.4.0:=[X?,wayland?,drm]
+	>=x11-libs/libdrm-2.4.52[video_cards_intel,${MULTILIB_USEDEP}]
+	>=x11-libs/libva-2.4.0:=[X?,wayland?,drm,${MULTILIB_USEDEP}]
 	wayland? (
-		>=dev-libs/wayland-1.11
-		>=media-libs/mesa-9.1.6[egl]
+		>=dev-libs/wayland-1.11[${MULTILIB_USEDEP}]
+		>=media-libs/mesa-9.1.6[egl,${MULTILIB_USEDEP}]
 	)
 "
 DEPEND="${RDEPEND}"
@@ -36,7 +36,7 @@ src_prepare() {
 	eautoreconf
 }
 
-src_configure() {
+multilib_src_configure() {
 	local myconf=(
 		$(use_enable wayland)
 		$(use_enable X x11)
@@ -44,6 +44,6 @@ src_configure() {
 	ECONF_SOURCE="${S}" econf "${myconf[@]}"
 }
 
-src_install_all() {
+multilib_src_install_all() {
 	find "${D}" -name "*.la" -delete || die
 }
